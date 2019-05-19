@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@wyre/api": "^1.0.5",
     "dotenv": "^8.0.0",
     "fortmatic": "^0.7.2",
     "jquery": "3.2",

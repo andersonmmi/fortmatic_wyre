@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import $ from "jquery";
+import constants from "./constants";
 
 // ****************************************************************************
 
@@ -9,7 +10,26 @@ import Fortmatic from "fortmatic";
 // Works for web3 1.0 and pre-1.0 versions
 import Web3 from "web3";
 
-require("dotenv").config();
+const apiKey = constants.API_KEY;
+const secretKey = constants.SECRET_KEY;
+
+const WyreClient = require("@wyre/api").WyreClient;
+
+let wyre = new WyreClient({
+  format: "json_numberstring",
+  apiKey: apiKey,
+  secretKey: secretKey,
+  baseUrl: "https://api.testwyre.com"
+});
+
+wyre.get("/v2/account").then(
+  account => {
+    console.log("I am Wyre account ", account.id);
+  },
+  err => {
+    console.log("Problems, cap'n: ", err);
+  }
+);
 
 const fm = new Fortmatic("pk_test_4D175B5BE5D1ACA4");
 let web3 = new Web3(fm.getProvider());

@@ -1,3 +1,6 @@
+# Secret Constants
+src/constants.js
+
 # Logs
 logs
 *.log
